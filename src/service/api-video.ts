@@ -1,4 +1,4 @@
-import { VideoRoot } from "../models/video";
+import { MVDetail, MVURL, RelatedVideo, VideoRoot } from "../models/video";
 import zbRequest from "./request";
 
 /**
@@ -18,7 +18,7 @@ export function getTopMV(offset: number, limit = 10) {
  * @param id MV id
  */
 export function getMVURL(id: number) {
-  return zbRequest.get("/mv/url", { id });
+  return zbRequest.get<{ data: MVURL }>("/mv/url", { id });
 }
 
 /**
@@ -26,13 +26,13 @@ export function getMVURL(id: number) {
  * @param id MV id
  */
 export function getMVDetail(mvid: number) {
-  return zbRequest.get("/mv/detail", { mvid });
+  return zbRequest.get<{ data: MVDetail }>("/mv/detail", { mvid });
 }
 
 /**
  * 请求相关 MV
  * @param id MV id
  */
-export function getRelatedMV(id: number) {
-  return zbRequest.get("/related/allvideo", { id });
+export function getRelatedMV(mvid: number) {
+  return zbRequest.get<{ mvs: RelatedVideo[] }>("/simi/mv", { mvid });
 }

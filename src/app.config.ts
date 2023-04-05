@@ -1,5 +1,9 @@
 export default defineAppConfig({
-  pages: ["pages/main-music/index", "pages/main-video/index"],
+  pages: [
+    "pages/main-music/index",
+    "pages/main-video/index",
+    "pages/detail-video/index",
+  ],
   window: {
     backgroundTextStyle: "light",
     navigationBarBackgroundColor: "#fafafa",
