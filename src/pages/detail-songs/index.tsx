@@ -57,7 +57,7 @@ const DetailSongs = () => {
   return (
     playlistInfo && (
       <>
-        {detailType === "ranking" && <AreaHeader title={playlistInfo.name} />}
+        {detailType === "ranking" && <AreaHeader title={playlistInfo.name} showRight={false} />}
         {detailType === "playlist" && (
           <PlaylistDetailHeader playlistInfo={playlistInfo} />
         )}

@@ -1,5 +1,9 @@
 import { Track } from "src/models/music";
 import { View, Text, Image } from "@tarojs/components";
+import Taro from "@tarojs/taro";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "src/store";
+import { fetchSongAction } from "src/store/features/player";
 import style from "./style.module.scss";
 
 interface Props {
@@ -8,8 +12,13 @@ interface Props {
 }
 
 const SongItemV2 = ({ index, item }: Props) => {
+  const dispatch = useDispatch<AppDispatch>()
+
   function onTap() {
-    console.log(item.id);
+    Taro.navigateTo({
+      url: `/pages/music-player/index?id=${item.id}`,
+    });
+    dispatch(fetchSongAction(item.id))
   }
   return (
     <View className={style.item} onTap={onTap}>

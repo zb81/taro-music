@@ -1,5 +1,9 @@
 import { Track } from "src/models/music";
 import { View, Image } from "@tarojs/components";
+import Taro from "@tarojs/taro";
+import { AppDispatch } from "src/store";
+import { useDispatch } from "react-redux";
+import { fetchSongAction } from "src/store/features/player";
 import style from "./style.module.scss";
 
 interface Props {
@@ -7,14 +11,13 @@ interface Props {
 }
 
 const SongItemV1 = ({ data }: Props) => {
+  const dispatch = useDispatch<AppDispatch>()
+
   function handleTap() {
-    console.log(data.id)
-    // 页面跳转
-    // Taro.navigateTo({
-    //   url: `/pages/music-player/index?id=${id}`,
-    // });
-    // 请求歌曲数据
-    // playerStore.dispatch('playMusicWithSongIdAction', { id })
+    Taro.navigateTo({
+      url: `/pages/music-player/index?id=${data.id}`,
+    });
+    dispatch(fetchSongAction(data.id))
   }
   return (
     <View className={style.item} onTap={handleTap}>

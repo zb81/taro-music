@@ -1,0 +1,22 @@
+.nav-bar {
+  display: flex;
+  align-items: center;
+  height: 40Px;
+  text-align: center;
+}
+
+.left, .right {
+  display: flex;
+  justify-content: center;
+  width: 80rpx;
+}
+
+.icon {
+  width: 40rpx;
+  vertical-align: bottom;
+}
+
+.center {
+  flex: 1;
+}
+
