@@ -12,6 +12,7 @@
 .left {
   flex: 1;
   padding: 16rpx;
+  max-width: calc(100% - 250rpx);
 }
 
 .name {
@@ -24,6 +25,9 @@
   font-size: 24rpx;
   line-height: 1.7;
   color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .artist {
   color: #777;
@@ -32,6 +36,7 @@
 .right {
   width: 200rpx;
   height: 100%;
+  flex: none;
 }
 
 .count {

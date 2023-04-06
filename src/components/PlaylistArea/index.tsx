@@ -1,5 +1,6 @@
 import { Playlist } from "src/models/music";
 import { ScrollView, View } from "@tarojs/components";
+import Taro from "@tarojs/taro";
 import style from "./style.module.scss";
 import AreaHeader from "../AreaHeader";
 import PlaylistItem from "../PlaylistItem";
@@ -11,7 +12,9 @@ interface Props {
 
 const PlaylistArea = ({ title = "默认歌单", playlists }: Props) => {
   function handleTapPlaylist(id: number) {
-    console.log(id);
+    Taro.navigateTo({
+      url: `/pages/detail-songs/index?id=${id}&type=playlist`,
+    });
   }
 
   return (

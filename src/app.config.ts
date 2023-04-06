@@ -3,6 +3,7 @@ export default defineAppConfig({
     "pages/main-music/index",
     "pages/main-video/index",
     "pages/detail-video/index",
+    "pages/detail-songs/index"
   ],
   window: {
     backgroundTextStyle: "light",

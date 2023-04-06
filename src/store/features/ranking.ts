@@ -60,3 +60,10 @@ export const {
 
 // 导出 reducer
 export default rankingSlice.reducer;
+
+export const rankingMap = {
+  3778678: 'hotRanking',
+  3779629: 'newRanking',
+  2884035: 'originalRanking',
+  19723756: 'riseRanking',
+}

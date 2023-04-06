@@ -14,8 +14,8 @@ const RankingItem = ({ data, onTap }: Props) => {
       <View className={style.left}>
         <View className={style.name}>{data.name}</View>
         {data.tracks?.slice(0, 3).map((item, idx) => (
-          <View key={item.id}>
-            {idx + 1}. {item.name} <Text>{item.ar[0].name}</Text>
+          <View key={item.id} className={style.song}>
+            {idx + 1}. {item.name} <Text className={style.artist}>- {item.ar[0].name}</Text>
           </View>
         ))}
       </View>

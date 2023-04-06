@@ -4,7 +4,8 @@ import { Banner, Playlist, PlaylistDetail, Track } from "src/models/music";
 import { getBanners, getPlaylists } from "src/service/api-music";
 import queryRect from "src/utils/query-rect";
 import throttle from "src/utils/throttle";
-import { fetchRankingDataAction } from "src/store/features/ranking";
+import { fetchRankingDataAction, rankingMap } from "src/store/features/ranking";
+import Taro from "@tarojs/taro";
 import { AtSearchBar } from "taro-ui";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "src/store";
@@ -67,8 +68,14 @@ const MainMusic = () => {
     });
   }, 100);
 
+  function navigateToDetailSongs(name: string) {
+    Taro.navigateTo({
+      url: `/pages/detail-songs/index?ranking=${name}&type=ranking`,
+    });
+  }
+
   function handleTapRanking(id: number) {
-    console.log(id)
+    navigateToDetailSongs(rankingMap[id]);
   }
 
   return (
@@ -106,7 +113,10 @@ const MainMusic = () => {
 
       {/* 歌曲推荐 */}
       <View className='recommend-song'>
-        <AreaHeader title='歌曲推荐' />
+        <AreaHeader
+          title='歌曲推荐'
+          onTapRight={() => navigateToDetailSongs("hotRanking")}
+        />
         <View className='song-list'>
           {recommendSongs.map((item) => (
             <SongItemV1 key={item.id} data={item} />
@@ -127,7 +137,11 @@ const MainMusic = () => {
         <View className='top'>
           <AreaHeader title='巅峰榜' showRight={false} />
           {rankings.map((item) => (
-            <RankingItem key={item.id} data={item} onTap={() => handleTapRanking(item.id)} />
+            <RankingItem
+              key={item.id}
+              data={item}
+              onTap={() => handleTapRanking(item.id)}
+            />
           ))}
         </View>
       )}
