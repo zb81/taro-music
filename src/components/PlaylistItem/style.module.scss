@@ -1,0 +1,36 @@
+.item {
+  width: 200rpx;
+}
+
+.album {
+  position: relative;
+}
+
+.album .image {
+  width: 100%;
+  height: 200rpx;
+  border-radius: 14rpx;
+  vertical-align: bottom;
+}
+
+.album .count {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: white;
+  font-size: 22rpx;
+  padding: 2rpx 6rpx;
+  border-radius: 8rpx;
+  background: rgba(0, 0, 0, .4);
+}
+
+.item .name {
+  font-size: 24rpx;
+  white-space: normal;
+  margin-top: 10rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}

@@ -1,0 +1,16 @@
+.playlist {
+  width: 100vw;
+  white-space: nowrap;
+  position: relative;
+  left: -20rpx;
+}
+
+.playlistItem {
+  display: inline-block;
+  margin-left: 20rpx;
+  vertical-align: top;
+}
+
+.playlistItem:last-child {
+  margin-right: 20rpx;
+}

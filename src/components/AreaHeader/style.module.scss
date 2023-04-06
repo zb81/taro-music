@@ -1,0 +1,28 @@
+.header {
+  margin: 20rpx 0 12rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .title {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.header .right .default {
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #777;
+}
+
+.header .slot:empty + .default {
+  visibility: visible;
+}
+
+.header .right .default .icon {
+  width: 40rpx;
+  height: 40rpx;
+}

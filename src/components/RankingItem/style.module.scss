@@ -1,0 +1,46 @@
+.item {
+  background-color: #eee;
+  border-radius: 14rpx;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  height: 200rpx;
+  margin-top: 20rpx;
+  position: relative;
+}
+
+.left {
+  flex: 1;
+  padding: 16rpx;
+}
+
+.name {
+  font-weight: 500;
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
+}
+
+.song {
+  font-size: 24rpx;
+  line-height: 1.7;
+  color: #333;
+}
+.artist {
+  color: #777;
+}
+
+.right {
+  width: 200rpx;
+  height: 100%;
+}
+
+.count {
+  position: absolute;
+  color: white;
+  bottom: 0;
+  right: 0;
+  font-size: 20rpx;
+  padding: 4rpx 8rpx;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 8rpx;
+}
