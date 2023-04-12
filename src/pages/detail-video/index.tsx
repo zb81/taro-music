@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { MVDetail, RelatedVideo } from "src/models/video";
 import { getMVURL, getMVDetail, getRelatedMV } from "src/service/api-video";
 import { formatCount } from "src/utils/format";
+import { AppDispatch } from "src/store";
+import { useDispatch } from "react-redux";
+import { changePaused } from "src/store/features/player";
 import "./index.scss";
 import DetailVideoItem from "./cpns/DetailVideoItem";
 
@@ -39,6 +42,12 @@ const DetailVideo = () => {
       });
     }
   }
+
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    dispatch(changePaused());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (mvId) {

@@ -31,11 +31,11 @@ const initialState: PlayerState = {
   lyrics: [] as LyricItem[],
 
   currentTime: 0,
-  currentLyric: '',
+  currentLyric: "",
   currentLyricIndex: 0,
 
   playModeIndex: 0, // 0-列表循环，1-单曲循环，2-随机播放
-  paused: false,
+  paused: true,
 };
 
 const playerSlice = createSlice({
@@ -66,8 +66,14 @@ const playerSlice = createSlice({
     changePlayModeIndex(state, { payload }) {
       state.playModeIndex = payload;
     },
-    changePaused(state, { payload }) {
-      state.paused = payload;
+    changePaused(state) {
+      if (audioCtx.paused) {
+        state.paused = false;
+        audioCtx.play();
+      } else {
+        state.paused = true;
+        audioCtx.pause();
+      }
     },
   },
 });
@@ -94,9 +100,9 @@ export const fetchSongAction = createAsyncThunk<
   audioCtx.autoplay = true;
 
   // 3.监听 audioCtx 事件
-  state = getState().player
+  state = getState().player;
   audioCtx.onCanplay(() => {
-    audioCtx.play();
+    dispatch(changePaused());
   });
 
   audioCtx.onTimeUpdate(() => {

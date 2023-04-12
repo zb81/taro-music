@@ -18,6 +18,7 @@ import {
   audioCtx,
   changeCurrentTime,
   changePlayModeIndex,
+  changePaused,
 } from "src/store/features/player";
 import "./index.scss";
 
@@ -32,6 +33,7 @@ const MusicPlayer = () => {
     currentLyricIndex,
     playModeIndex,
     lyrics,
+    paused,
   } = useSelector<RootState, RootState["player"]>((state) => state.player);
 
   const [currentTab, setCurrentTab] = useState(0);
@@ -103,6 +105,10 @@ const MusicPlayer = () => {
     dispatch(changePlayModeIndex((playModeIndex + 1) % 3));
   }
 
+  function togglePause() {
+    dispatch(changePaused());
+  }
+
   return (
     song.id && (
       <>
@@ -163,10 +169,19 @@ const MusicPlayer = () => {
                 className='btn prev'
                 src='/assets/images/player/play_prev.png'
               />
-              <Image
-                className='btn pause'
-                src='/assets/images/player/play_pause.png'
-              />
+              {paused ? (
+                <Image
+                  className='btn pause'
+                  src='/assets/images/player/play_resume.png'
+                  onTap={togglePause}
+                />
+              ) : (
+                <Image
+                  className='btn pause'
+                  src='/assets/images/player/play_pause.png'
+                  onTap={togglePause}
+                />
+              )}
               <Image
                 className='btn next'
                 src='/assets/images/player/play_next.png'
